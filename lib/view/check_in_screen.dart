@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gev_app/utilities/commons.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:gev_app/utilities/constants.dart';
+import 'package:gev_app/utilities/size_config.dart';
 import 'package:gev_app/view/view_check_in_screen.dart';
 
 class CheckInScreen extends StatefulWidget {
@@ -14,23 +15,31 @@ class _CheckInScreenState extends State<CheckInScreen> {
   bool isVisible=true;
   bool value = false;
   String nameStr;
-  String checkOutDateStr;
   DateTime checkOutDate;
   TextEditingController checkOutDateCon = TextEditingController();
-  String checkInDateStr;
   DateTime checkInDate;
   TextEditingController checkInDateCon = TextEditingController();
 
   //global key for validation
-  GlobalKey<FormState> _form = GlobalKey<FormState>();
+  var _formKey = GlobalKey<FormState>();
+  var isLoading = false;
 
-  void _validate() {
-    _form.currentState.validate();
+  bool _submit() {
+    final isValid = _formKey.currentState.validate();
+    if (!isValid) {
+      return false;
+    }
+    _formKey.currentState.save();
+    return true;
   }
-
   @override
   Widget build(BuildContext context) {
+
+    //Media Query
+    SizeConfig().init(context);
+
     return Scaffold(
+      bottomNavigationBar: BottomNavbar(),
       appBar: Common.appBar('Check-In'),
       resizeToAvoidBottomPadding: false,
       resizeToAvoidBottomInset: false,
@@ -40,31 +49,30 @@ class _CheckInScreenState extends State<CheckInScreen> {
           height: double.infinity,
           decoration: Common.background(),
           child: Form(
-            key: _form,
+            key: _formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
+              //mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(
-                      bottom: 20, left: 10, right: 10),
+                      bottom: 20, left: 10, right: 10, top: 10),
                   child: TextFormField(
-                    keyboardType: TextInputType.text,
+                    keyboardType: TextInputType.number,
                     decoration: Common.buildInputDecoration(
                         Icons.phone, "Contact Number"),
-                    validator: (String value) {
-                      if (value.isEmpty) {
-                        return 'Please Enter Name';
+                    validator: (value) {
+                      if (value.isEmpty ||
+                          !RegExp(r"^(?:[+0]9)?[0-9]{10}$")
+                              .hasMatch(value)) {
+                        return 'Enter a valid number';
                       }
                       return null;
-                    },
-                    onSaved: (String value) {
-                      nameStr = value;
                     },
                   ),
                 ),
                 SizedBox(
-                  height: 5,
+                  height: SizeConfig.blockSizeVertical,
                 ),
                 Visibility(
                   visible: isVisible,
@@ -77,14 +85,20 @@ class _CheckInScreenState extends State<CheckInScreen> {
                         FocusScope.of(context).requestFocus(new FocusNode());
                         pickupDateCheckIn();
                       },
-                      keyboardType: TextInputType.text,
                       decoration: Common.buildInputDecoration(
                           Icons.calendar_today_sharp, "Check-In Date"),
+                      validator: (String value) {
+                        if (value.isEmpty) {
+                          return 'Please fill the date';
+                        }
+                        return null;
+                      },
+
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: 5,
+                  height: SizeConfig.blockSizeVertical,
                 ),
                 Visibility(
                   visible: isVisible,
@@ -92,12 +106,18 @@ class _CheckInScreenState extends State<CheckInScreen> {
                     padding:
                         const EdgeInsets.only(bottom: 20, left: 10, right: 10),
                     child: TextFormField(
+                      validator: (String value) {
+                        if (value.isEmpty) {
+                          return 'Please fill the date';
+                        }
+                        return null;
+                      },
+
                       controller: checkOutDateCon,
                       onTap: () {
                         FocusScope.of(context).requestFocus(new FocusNode());
                         pickupDateCheckOut();
                       },
-                      keyboardType: TextInputType.text,
                       decoration: Common.buildInputDecoration(
                           Icons.calendar_today_sharp, "Check-out Date"),
                     ),
@@ -106,7 +126,7 @@ class _CheckInScreenState extends State<CheckInScreen> {
                 Visibility(
                   visible: isVisible,
                   child: SizedBox(
-                    height: 5,
+                    height: SizeConfig.blockSizeVertical,
                   ),
                 ),
                 Padding(
@@ -120,7 +140,7 @@ class _CheckInScreenState extends State<CheckInScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 5,
+                  height: SizeConfig.blockSizeVertical,
                 ),
                 Center(
                   child: ListTile(
@@ -157,7 +177,7 @@ class _CheckInScreenState extends State<CheckInScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: SizeConfig.blockSizeVertical,
                 ),
                 Center(
                   child: ButtonTheme(
@@ -165,11 +185,12 @@ class _CheckInScreenState extends State<CheckInScreen> {
                     height: 42,
                     child: RaisedButton(
                       onPressed: () {
+                        if(_submit()){
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => ViewCheckInScreen()),
-                        );
+                            );}
                       },
                       child: Text(
                         'Submit',

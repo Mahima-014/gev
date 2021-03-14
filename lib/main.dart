@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gev_app/view/check_in_screen.dart';
 import 'package:gev_app/view/feedback_screen.dart';
+import 'package:gev_app/view/profile_screen.dart';
+import 'package:gev_app/view/support_a_cause_screen.dart';
 import 'package:gev_app/view/view_check_in_screen.dart';
 
 void main() {
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home:CheckInScreen(),
+      home:ProfileScreen(),
     );
   }
 }

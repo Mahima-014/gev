@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gev_app/utilities/constants.dart';
+import 'package:gev_app/view/support_a_cause_screen.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:gev_app/utilities/commons.dart';
 
@@ -13,6 +14,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavbar(),
       appBar: Common.appBar('Feedback'),
       body: SingleChildScrollView(
         child: Center(
@@ -55,7 +57,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                               },
                               starCount: 5,
                               rating: rating,
-                              size: 20.0,
+                              size: 20,
                               isReadOnly:false,
                               // fullRatedIconData: Icons.blur_off,
                               // halfRatedIconData: Icons.blur_on,
@@ -377,10 +379,14 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                           height: 42,
                           child: RaisedButton(
                             onPressed: (){
-                              print('Done');
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SupportACause()),
+                              );
                             },
                             child: Text(
-                              'Donate',
+                              'Support a Cause',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
