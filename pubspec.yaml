@@ -32,16 +32,18 @@ dependencies:
   form_validator: ^0.1.7
   smooth_star_rating: ^1.1.1
   webview_flutter: ^1.0.7
+  random_string: ^2.1.0
+  shared_preferences: ^0.5.12+4
+  json_annotation: ^4.0.0
+  http: ^0.12.2
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  json_serializable: ^4.0.3
+  build_runner: ^1.12.1
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter.
 flutter:
 
   uses-material-design: true

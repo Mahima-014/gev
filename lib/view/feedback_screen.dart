@@ -14,8 +14,10 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavbar(),
       appBar: Common.appBar('Feedback'),
+      bottomNavigationBar: BottomNavbar(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButton: FloatingHomeButton(),
       body: SingleChildScrollView(
         child: Center(
           child: Column(

@@ -28,8 +28,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: Common.appBarWithLogout('Profile'),
       bottomNavigationBar: BottomNavbar(),
-      resizeToAvoidBottomPadding: false,
-      resizeToAvoidBottomInset: false,
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButton: FloatingHomeButton(),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(20.0),

@@ -19,8 +19,10 @@ class _SupportACauseState extends State<SupportACause> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavbar(),
       appBar: Common.appBar('Support A Cause'),
+      bottomNavigationBar: BottomNavbar(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButton: FloatingHomeButton(),
       body: WebView(
         initialUrl: 'https://ecovillage.org.in/donation/',
       ),

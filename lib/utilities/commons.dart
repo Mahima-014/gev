@@ -204,9 +204,9 @@ class _BottomNavbarState extends State<BottomNavbar> {
             label: 'Map',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(
-              "assets/images/icons/home.png",
-              scale: 1.5,
+            icon: Icon(null
+              // Icons.home,
+              // size: 40,
             ),
             label: 'Home',
             // label: '',
@@ -234,6 +234,22 @@ class _BottomNavbarState extends State<BottomNavbar> {
         // unselectedLabelStyle: TextStyle(color: Colors.black),
         onTap: null,
       ),
+    );
+  }
+}
+
+
+class FloatingHomeButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new FloatingActionButton(
+      elevation: 0.0,
+      child: Image.asset(
+        "assets/images/icons/home.png",
+        scale: 1.5,
+      ),
+      backgroundColor: Colors.amber[300],
+      onPressed: () {},
     );
   }
 }

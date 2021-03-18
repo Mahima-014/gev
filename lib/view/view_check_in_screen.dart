@@ -28,10 +28,10 @@ class _ViewCheckInScreenState extends State<ViewCheckInScreen> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      bottomNavigationBar: BottomNavbar(),
       appBar: Common.appBar('View Check-In'),
-      resizeToAvoidBottomPadding: false,
-      resizeToAvoidBottomInset: false,
+      bottomNavigationBar: BottomNavbar(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButton: FloatingHomeButton(),
       body: SingleChildScrollView(
         child: Container(
             padding: const EdgeInsets.all(20.0),
