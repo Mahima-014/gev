@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:gev_app/model/user.dart';
-import 'package:gev_app/model/mobile_user_details.dart';
+import 'package:gev_app/models/user.dart';
+import 'package:gev_app/models/mobile_user_details.dart';
 import 'package:gev_app/utilities/preferences.dart';
 
 class CheckInController

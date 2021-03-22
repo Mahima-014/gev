@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gev_app/utilities/preferences.dart';
-import 'package:gev_app/view/check_in_screen.dart';
-import 'package:gev_app/view/feedback_screen.dart';
-import 'package:gev_app/view/profile_screen.dart';
-import 'package:gev_app/view/support_a_cause_screen.dart';
-import 'package:gev_app/view/view_check_in_screen.dart';
+import 'package:gev_app/views/check_in_screen.dart';
+import 'package:gev_app/views/event_screen.dart';
+import 'package:gev_app/views/feedback_screen.dart';
+import 'package:gev_app/views/profile_screen.dart';
+import 'package:gev_app/views/schedule_screen.dart';
+import 'package:gev_app/views/support_a_cause_screen.dart';
+import 'package:gev_app/views/view_check_in_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -33,7 +35,15 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home:CheckInScreen(),
+      routes: {
+        '/': (context) => FeedbackScreen(),
+        '/profile': (context) => ProfileScreen(),
+        '/schedule': (context) => ScheduleScreen(),
+        '/supportACause': (context) => SupportACause(),
+        '/viewCheckIn':(context)=>ViewCheckInScreen(),
+        //'/feedback':(context)=>FeedbackScreen(),
+        '/event':(context)=>EventScreen(),
+      },
     );
   }
 

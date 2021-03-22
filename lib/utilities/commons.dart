@@ -1,6 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gev_app/utilities/constants.dart';
+import 'package:gev_app/views/event_screen.dart';
+import 'package:gev_app/views/feedback_screen.dart';
+import 'package:gev_app/views/profile_screen.dart';
+import 'package:gev_app/views/schedule_screen.dart';
+import 'package:gev_app/views/view_check_in_screen.dart';
 
 class Common {
   //App Bar
@@ -43,8 +48,7 @@ class Common {
 
   //appbar with logout button
 
-  static AppBar appBarWithLogout(String title)
-  {
+  static AppBar appBarWithLogout(String title) {
     return AppBar(
       title: Text(
         title,
@@ -56,7 +60,6 @@ class Common {
       ),
       iconTheme: IconThemeData(
         color: Colors.black,
-
       ),
       backgroundColor: Color(Constant.appBarBackgroundColor),
       actions: <Widget>[
@@ -191,36 +194,36 @@ class _BottomNavbarState extends State<BottomNavbar> {
         items: [
           BottomNavigationBarItem(
             icon: Image.asset(
-              "assets/images/icons/event.png",
+              "assets/icons/event.png",
               scale: 1.5,
             ),
             label: 'Events',
           ),
           BottomNavigationBarItem(
             icon: Image.asset(
-              "assets/images/icons/map.png",
+              "assets/icons/map.png",
               scale: 1.5,
             ),
             label: 'Map',
           ),
           BottomNavigationBarItem(
             icon: Icon(null
-              // Icons.home,
-              // size: 40,
-            ),
+                // Icons.home,
+                // size: 40,
+                ),
             label: 'Home',
             // label: '',
           ),
           BottomNavigationBarItem(
             icon: Image.asset(
-              "assets/images/icons/schedule.png",
+              "assets/icons/schedule.png",
               scale: 1.5,
             ),
             label: 'Schedule',
           ),
           BottomNavigationBarItem(
             icon: Image.asset(
-              "assets/images/icons/profile.png",
+              "assets/icons/profile.png",
               scale: 1.5,
             ),
             label: 'Profile',
@@ -232,12 +235,32 @@ class _BottomNavbarState extends State<BottomNavbar> {
         fixedColor: Colors.brown,
         // selectedItemColor: Colors.brown,
         // unselectedLabelStyle: TextStyle(color: Colors.black),
-        onTap: null,
+        onTap: (index) {
+          switch (index) {
+            case 0:
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => EventScreen()),
+              );
+              break;
+            case 3:
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => ScheduleScreen()),
+              );
+              break;
+            case 4:
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => ProfileScreen()),
+              );
+              break;
+          }
+        },
       ),
     );
   }
 }
-
 
 class FloatingHomeButton extends StatelessWidget {
   @override
