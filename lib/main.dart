@@ -36,12 +36,12 @@ class _MyAppState extends State<MyApp> {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       routes: {
-        '/': (context) => FeedbackScreen(),
+        '/': (context) => CheckInScreen(),
         '/profile': (context) => ProfileScreen(),
         '/schedule': (context) => ScheduleScreen(),
         '/supportACause': (context) => SupportACause(),
         '/viewCheckIn':(context)=>ViewCheckInScreen(),
-        //'/feedback':(context)=>FeedbackScreen(),
+        '/feedback':(context)=>FeedbackScreen(),
         '/event':(context)=>EventScreen(),
       },
     );

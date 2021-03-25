@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gev_app/controller/check_in_controller.dart';
+import 'package:gev_app/controllers/check_in_controller.dart';
 import 'package:gev_app/models/mobile_user_details.dart';
 import 'package:gev_app/models/user.dart';
 import 'package:gev_app/utilities/commons.dart';

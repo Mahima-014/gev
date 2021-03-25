@@ -1,115 +1,52 @@
+class User {
+  String userName;
+  int userPhoneCountryCode;
+  int userPhone;
+  String userEmail;
+  String userAddress;
+  String userDob;
+  bool userIsActive;
+  String createDate;
+  String createdBy;
+  String lastModifiedDate;
+  String lastModifiedBy;
 
-class User
-{
-  String _userName;
-  int _userPhoneCountryCode;
-  int _userPhone;
-  String _userEmail;
-  String _userAddress;
-  String _userDob;
-  bool _userIsActive;
-  String _createDate;
-  String _createdBy;
-  String _lastModifiedDate;
-  String _lastModifiedBy;
-
-
-  User([this._userName,this._userPhoneCountryCode,this._userPhone,this._userEmail,this._userAddress,this._userDob,this._userIsActive,this._createDate,this._lastModifiedDate, this._lastModifiedBy]);
-
-  String get createDate => _createDate;
-
-
-  String get userName => _userName;
-
-  int get userPhoneountryCode => _userPhoneCountryCode;
-
-  bool get userIsActive => _userIsActive;
-
-  String get userDob => _userDob;
-
-  String get userAddress => _userAddress;
-
-  String get userEmail => _userEmail;
-
-  int get userPhone => _userPhone;
-
-  String get createdBy => _createdBy;
-
-  String get lastModifiedDate => _lastModifiedDate;
-
-  String get lastModifiedBy => _lastModifiedBy;
-
-
-  set userIsActive(bool value) {
-    _userIsActive = value;
-  }
-
-  set userDob(String value) {
-    _userDob = value;
-  }
-
-  set userAddress(String value) {
-    _userAddress = value;
-  }
-
-  set userEmail(String value) {
-    _userEmail = value;
-  }
-
-  set userPhone(int value) {
-    _userPhone = value;
-  }
-
-  set userPhoneCountryCode(int value) {
-    _userPhoneCountryCode = value;
-  }
-
-  set createDate(String value) {
-    _createDate = value;
-  }
-
-  set userName(String value) {
-    _userName = value;
-  }
-
-
-  set createdBy(String value) {
-    _createdBy = value;
-  }
-
-  set lastModifiedBy(String value) {
-    _lastModifiedBy = value;
-  }
-
-  set lastModifiedDate(String value) {
-    _lastModifiedDate = value;
-  }
+  User(
+      [this.userName,
+      this.userPhoneCountryCode,
+      this.userPhone,
+      this.userEmail,
+      this.userAddress,
+      this.userDob,
+      this.userIsActive,
+      this.createDate,
+      this.lastModifiedDate,
+      this.lastModifiedBy]);
 
   User.fromJson(Map<String, dynamic> json)
-      : _userName = json['user_name'],
-        _userPhoneCountryCode=json['user_phone_country_code'],
-  _userPhone=json['user_phone'],
-        _userEmail=json['user_email'],
-  _userAddress=json['user_address'],
-  _userDob=json['user_dob'],
-  _userIsActive=json['user_is_active'],
-  _createDate=json['create_date'],
-  _createdBy=json['create_by'],
-  _lastModifiedDate=json['last_modified_date'],
-  _lastModifiedBy=json['last_modified_by'];
+      : userName = json['user_name'],
+        userPhoneCountryCode = json['user_phone_country_code'],
+        userPhone = json['user_phone'],
+        userEmail = json['user_email'],
+        userAddress = json['user_address'],
+        userDob = json['user_dob'],
+        userIsActive = json['user_is_active'],
+        createDate = json['create_date'],
+        createdBy = json['create_by'],
+        lastModifiedDate = json['last_modified_date'],
+        lastModifiedBy = json['last_modified_by'];
 
   Map<String, dynamic> toJson() => {
-    'user_name': _userName,
-    'user_phone_country_code':_userPhoneCountryCode,
-    'user_phone':_userPhone,
-    'user_email':_userEmail,
-    'user_address':_userAddress,
-    'user_dob':_userDob,
-    'user_is_active':_userIsActive,
-    'create_date':_createDate,
-    'create_by':_createdBy,
-    'last_modified_date':_lastModifiedDate,
-    'last_modified_by':_lastModifiedBy,
-  };
-
+        'user_name': userName,
+        'user_phone_country_code': userPhoneCountryCode,
+        'user_phone': userPhone,
+        'user_email': userEmail,
+        'user_address': userAddress,
+        'user_dob': userDob,
+        'user_is_active': userIsActive,
+        'create_date': createDate,
+        'create_by': createdBy,
+        'last_modified_date': lastModifiedDate,
+        'last_modified_by': lastModifiedBy,
+      };
 }

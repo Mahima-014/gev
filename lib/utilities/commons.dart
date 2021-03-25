@@ -268,7 +268,7 @@ class FloatingHomeButton extends StatelessWidget {
     return new FloatingActionButton(
       elevation: 0.0,
       child: Image.asset(
-        "assets/images/icons/home.png",
+        "assets/icons/home.png",
         scale: 1.5,
       ),
       backgroundColor: Colors.amber[300],

@@ -32,7 +32,7 @@ dependencies:
   form_validator: ^0.1.7
   smooth_star_rating: ^1.1.1
   webview_flutter: ^1.0.7
-  shared_preferences: ^0.5.12+4
+  shared_preferences: ^2.0.4
   http: ^0.12.2
 
 
