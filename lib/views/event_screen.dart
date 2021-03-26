@@ -4,6 +4,8 @@ import 'package:gev_app/models/event_list_model.dart';
 import 'package:gev_app/utilities/commons.dart';
 import 'package:gev_app/utilities/constants.dart';
 
+import '../utilities/commons.dart';
+
 class EventScreen extends StatefulWidget {
   @override
   _EventScreenState createState() => _EventScreenState();
@@ -12,12 +14,16 @@ class EventScreen extends StatefulWidget {
 class _EventScreenState extends State<EventScreen> {
   EventController eventController = EventController();
   List<EventListModel> eventList;
+  int selectedYear;
+  String selectedMonth;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     eventList = eventController.getEventList();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,78 +36,160 @@ class _EventScreenState extends State<EventScreen> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 10,right: 50,top: 30),
+              padding: const EdgeInsets.only(left: 30, right: 50, top: 30),
               child: Container(
                 height: 50,
                 decoration: BoxDecoration(
-                    border: Border.all(
-                        color: Colors.black,
-                        width: 2
-                    ),
-                    borderRadius: BorderRadius.all(Radius.circular(20))
-                ),
-                child: Card(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10, top:10),
-                            child: Column(
-                              children: [
-                                Text(
-                                  'Year',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
+                    border: Border.all(color: Colors.black, width: 2),
+                    borderRadius: BorderRadius.all(Radius.circular(20))),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // InkWell(
+                    //   onTap: (){
+                    //
+                    //   },
+                    //   child: Row(
+                    //     children: [
+                    //       Padding(
+                    //         padding: const EdgeInsets.only(left: 10, top:10),
+                    //         child: Column(
+                    //           children: [
+                    //             Text(
+                    //               'Year',
+                    //               style: TextStyle(
+                    //                 fontSize: 20,
+                    //                 fontWeight: FontWeight.bold,
+                    //               ),
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       ),
+                    //       Padding(
+                    //         padding: const EdgeInsets.only(left: 15, top:10),
+                    //         child: Column(
+                    //           children: [
+                    //             Icon(
+                    //               Icons.arrow_drop_down_circle_rounded,
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       )
+                    //     ],
+                    //   ),
+                    // ),
+
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                      child: DropdownButton<int>(
+                        value: selectedYear,
+                        hint: Text(
+                          "Year",
+                          style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              height: 1.5),
+                        ),
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.grey,
+                            height: 1.3),
+                        icon: Icon(
+                          Icons.arrow_drop_down_circle_rounded,
+                          color: Colors.black,
+                        ),
+                        underline: Container(
+                          height: 2,
+                        ),
+                        items: Common.getYearList().map((int value) {
+                          return new DropdownMenuItem<int>(
+                            value: value,
+                            child: Text(
+                              value.toString(),
+                              textAlign: TextAlign.left,
+                              style: TextStyle(color: Colors.grey),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15, top:10),
-                            child: Column(
-                              children: [
-                                Icon(
-                                  Icons.arrow_drop_down_circle_rounded,
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
+                          );
+                        }).toList(),
+                        onChanged: (value) {
+                          setState(() {
+                            selectedYear = value;
+                          });
+                        },
                       ),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 15,top: 10),
-                            child: Column(
-                              children: [
-                                Text(
-                                  'Month',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
+                    ),
+
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                      child: DropdownButton<String>(
+                        value: selectedMonth,
+                        hint: Text(
+                          "Month",
+                          style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              height: 1.5),
+                        ),
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.grey,
+                            height: 1.3),
+                        icon: Icon(
+                          Icons.arrow_drop_down_circle_rounded,
+                          color: Colors.black,
+                        ),
+                        underline: Container(
+                          height: 2,
+                        ),
+                        items: Common.getMonthList().map((String value) {
+                          return new DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(
+                              value.toString(),
+                              textAlign: TextAlign.left,
+                              style: TextStyle(color: Colors.grey),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 10,top: 10),
-                            child: Column(
-                              children: [
-                                Icon(
-                                  Icons.arrow_drop_down_circle_rounded,
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
+                          );
+                        }).toList(),
+                        onChanged: (value) {
+                          setState(() {
+                            selectedMonth = value;
+                          });
+                        },
+                      ),
+                    ),
+
+                    // Row(
+                    //   children: [
+                    //     Padding(
+                    //       padding: const EdgeInsets.only(right: 15, top: 10),
+                    //       child: Column(
+                    //         children: [
+                    //           Text(
+                    //             'Month',
+                    //             style: TextStyle(
+                    //               fontSize: 20,
+                    //               fontWeight: FontWeight.bold,
+                    //             ),
+                    //           ),
+                    //         ],
+                    //       ),
+                    //     ),
+                    //     Padding(
+                    //       padding: const EdgeInsets.only(right: 10, top: 10),
+                    //       child: Column(
+                    //         children: [
+                    //           Icon(
+                    //             Icons.arrow_drop_down_circle_rounded,
+                    //           )
+                    //         ],
+                    //       ),
+                    //     )
+                    //   ],
+                    // ),
+                  ],
                 ),
               ),
             ),
@@ -115,66 +203,67 @@ class _EventScreenState extends State<EventScreen> {
                     margin: EdgeInsets.only(left: 20, right: 20),
                     elevation: 5,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius. circular(20),
+                      borderRadius: BorderRadius.circular(20),
                     ),
                     child: ListView.builder(
-                      shrinkWrap: true,
+                        shrinkWrap: true,
                         itemCount: eventController.getEventList().length,
-                        itemBuilder: (context, index){
+                        itemBuilder: (context, index) {
                           return Padding(
-                            padding: const EdgeInsets.only(top:10,bottom:10,right: 10,left: 10),
+                            padding: const EdgeInsets.only(
+                                top: 10, bottom: 10, right: 10, left: 10),
                             child: InkWell(
-                              onTap:(){
-                                showAlertBox(context,index);
-                                },
+                              onTap: () {
+                                showAlertBox(context, index);
+                              },
                               child: Container(
                                 height: 55,
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    color: Color(Constant.starColor),
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(25))),
+                                      color: Color(Constant.starColor),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(25))),
                                   child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(left: 10,top:15,bottom:15),
-                                          child: Column(
-                                            children: [
-                                              Text(
-                                                '${eventList[index].eventName}',
-                                                style: TextStyle(
-                                                  fontSize: 18,
-                                                  color: Colors.black,
-                                                ),
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10, top: 15, bottom: 15),
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              '${eventList[index].eventName}',
+                                              style: TextStyle(
+                                                fontSize: 18,
+                                                color: Colors.black,
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(right:10,top: 15,bottom: 15),
-                                          child: Column(
-                                            children: [
-                                              Text(
-                                                  '${eventList[index].date}',
-                                                style: TextStyle(
-                                                  fontSize: 18,
-                                                  color: Colors.black,
-                                                ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            right: 10, top: 15, bottom: 15),
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              '${eventList[index].date}',
+                                              style: TextStyle(
+                                                fontSize: 18,
+                                                color: Colors.black,
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-
                               ),
                             ),
                           );
-                      }
-                    ),
-
+                        }),
                   ),
                 ],
               ),
@@ -185,7 +274,7 @@ class _EventScreenState extends State<EventScreen> {
     );
   }
 
-  AlertDialog showAlertBox(BuildContext context,int index) {
+  AlertDialog showAlertBox(BuildContext context, int index) {
     var alertBox = AlertDialog(
       title: Text(
         'Name : ${eventList[index].eventName}',
@@ -193,15 +282,11 @@ class _EventScreenState extends State<EventScreen> {
       content: SingleChildScrollView(
         child: ListBody(
           children: <Widget>[
-            Text(
-                'Time: ${eventList[index].date}'
-            ),
+            Text('Time: ${eventList[index].date}'),
             SizedBox(
               height: 2,
             ),
-            Text(
-                'Description: ${eventList[index].description}'
-            ),
+            Text('Description: ${eventList[index].description}'),
           ],
         ),
       ),

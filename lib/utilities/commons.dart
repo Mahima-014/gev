@@ -164,7 +164,37 @@ class Common {
       ),
     );
   }
+
+
+  static List<DropdownMenuItem<int>> getYearDropDownButton()
+  {
+    return getYearList().map((int value) {
+        return new DropdownMenuItem<int>(
+          value: value,
+          child: new Text(value.toString()),
+        );
+      }).toList();
+  }
+
+
+  static List<int> getYearList()
+  {
+    List<int> yearList = [];
+    for(int i=DateTime.now().year; i>=2010; i--)
+      yearList.add(i);
+
+    return yearList;
+  }
+
+
+  static List<String> getMonthList()
+  {
+    List<String> monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    return monthList;
+  }
+
 }
+
 
 //BottomNavigationBar
 
