@@ -21,7 +21,7 @@ class _EventScreenState extends State<EventScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    eventList = eventController.getEventList();
+    eventList = eventController.getEventList(selectedYear,selectedMonth);
   }
 
   @override
@@ -207,7 +207,7 @@ class _EventScreenState extends State<EventScreen> {
                     ),
                     child: ListView.builder(
                         shrinkWrap: true,
-                        itemCount: eventController.getEventList().length,
+                        itemCount: eventController.getEventList(selectedYear, selectedMonth).length,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.only(
