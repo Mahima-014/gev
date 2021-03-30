@@ -2,6 +2,7 @@ import 'dart:collection';
 
 import 'package:gev_app/models/event_list_model.dart';
 import 'package:gev_app/utilities/db_manager.dart';
+import 'package:gev_app/utilities/local_notify_manager.dart';
 
 class EventController
 {
@@ -20,6 +21,31 @@ class EventController
     return eventList;
 
     
+  }
+
+  void setNotifications()
+  {
+    // LocalNotifyManager.localNotifyManager = LocalNotifyManager.init();
+    // LocalNotifyManager.localNotifyManager
+    //     .setOnNotificationReceive(onNotificationReceive);
+    // LocalNotifyManager.localNotifyManager
+    //     .setOnNotificationClick(onNotificationClick);
+
+    // await LocalNotifyManager.localNotifyManager.showNotification();
+    //await LocalNotifyManager.localNotifyManager.scheduleNotification();
+    //await LocalNotifyManager.localNotifyManager.showDailyAtTimeNotification();
+    //await LocalNotifyManager.localNotifyManager.showWeeklyAtDayTimeNotification();
+
+    // onNotificationReceive(RecieveNotification notification) {
+    //   print('Notification Recieved: ${notification.id}');
+    // }
+    //
+    // onNotificationClick(String payload) {
+    //   print('Payload $payload');
+    //   Navigator.push(context, MaterialPageRoute(builder: (context) {
+    //     return ScreenSecond(payload: payload);
+    //   }));
+    // }
   }
 
 }
