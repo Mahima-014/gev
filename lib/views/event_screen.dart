@@ -45,39 +45,6 @@ class _EventScreenState extends State<EventScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // InkWell(
-                    //   onTap: (){
-                    //
-                    //   },
-                    //   child: Row(
-                    //     children: [
-                    //       Padding(
-                    //         padding: const EdgeInsets.only(left: 10, top:10),
-                    //         child: Column(
-                    //           children: [
-                    //             Text(
-                    //               'Year',
-                    //               style: TextStyle(
-                    //                 fontSize: 20,
-                    //                 fontWeight: FontWeight.bold,
-                    //               ),
-                    //             ),
-                    //           ],
-                    //         ),
-                    //       ),
-                    //       Padding(
-                    //         padding: const EdgeInsets.only(left: 15, top:10),
-                    //         child: Column(
-                    //           children: [
-                    //             Icon(
-                    //               Icons.arrow_drop_down_circle_rounded,
-                    //             ),
-                    //           ],
-                    //         ),
-                    //       )
-                    //     ],
-                    //   ),
-                    // ),
 
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
@@ -160,35 +127,24 @@ class _EventScreenState extends State<EventScreen> {
                         },
                       ),
                     ),
-
-                    // Row(
-                    //   children: [
-                    //     Padding(
-                    //       padding: const EdgeInsets.only(right: 15, top: 10),
-                    //       child: Column(
-                    //         children: [
-                    //           Text(
-                    //             'Month',
-                    //             style: TextStyle(
-                    //               fontSize: 20,
-                    //               fontWeight: FontWeight.bold,
-                    //             ),
-                    //           ),
-                    //         ],
+                    // SizedBox.fromSize(
+                    //   size: Size(56, 56), // button width and height
+                    //   child: ClipOval(
+                    //     child: Material(
+                    //       color: Colors.white, // button color
+                    //       child: InkWell(
+                    //         onTap: () {}, // button pressed
+                    //         child: Column(
+                    //           mainAxisAlignment: MainAxisAlignment.center,
+                    //           children: <Widget>[
+                    //             Icon(Icons.search), // icon
+                    //           ],
+                    //         ),
                     //       ),
                     //     ),
-                    //     Padding(
-                    //       padding: const EdgeInsets.only(right: 10, top: 10),
-                    //       child: Column(
-                    //         children: [
-                    //           Icon(
-                    //             Icons.arrow_drop_down_circle_rounded,
-                    //           )
-                    //         ],
-                    //       ),
-                    //     )
-                    //   ],
-                    // ),
+                    //   ),
+                    // )
+
                   ],
                 ),
               ),

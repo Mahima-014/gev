@@ -59,7 +59,7 @@ class _CheckInScreenState extends State<CheckInScreen> {
       body: SingleChildScrollView(
         child: Container(
             padding: const EdgeInsets.all(20.0),
-            height: SizeConfig.screenHeight - (SizeConfig.screenHeight / 7),
+            height: SizeConfig.screenHeight - (SizeConfig.screenHeight / 9),
             width: SizeConfig.screenWidth,
             decoration: Common.background(),
             child: Form(

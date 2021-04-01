@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gev_app/utilities/constants.dart';
 import 'package:gev_app/views/event_screen.dart';
 import 'package:gev_app/views/feedback_screen.dart';
+import 'package:gev_app/views/home.dart';
 import 'package:gev_app/views/profile_screen.dart';
 import 'package:gev_app/views/schedule_screen.dart';
 import 'package:gev_app/views/view_check_in_screen.dart';
@@ -91,7 +92,7 @@ class Common {
     return BoxDecoration(
       image: DecorationImage(
         image: AssetImage("assets/images/gev_background.jpeg"),
-        fit: BoxFit.fill,
+        fit: BoxFit.fitHeight,
       ),
     );
   }
@@ -302,7 +303,12 @@ class FloatingHomeButton extends StatelessWidget {
         scale: 1.5,
       ),
       backgroundColor: Colors.amber[300],
-      onPressed: () {},
+      onPressed: () {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => MyHomePage()),
+        );
+      },
     );
   }
 }

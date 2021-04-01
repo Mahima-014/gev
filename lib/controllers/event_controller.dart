@@ -2,7 +2,6 @@ import 'dart:collection';
 
 import 'package:gev_app/models/event_list_model.dart';
 import 'package:gev_app/utilities/db_manager.dart';
-import 'package:gev_app/utilities/local_notify_manager.dart';
 
 class EventController
 {
@@ -20,7 +19,6 @@ class EventController
     ];
     return eventList;
 
-    
   }
 
   void setNotifications()

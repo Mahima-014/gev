@@ -24,13 +24,13 @@ class LocalNotifyManager {
   requestIOSPermission() {
     flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
-            IOSFlutterLocalNotificationsPlugin>()
+        IOSFlutterLocalNotificationsPlugin>()
         .requestPermissions(alert: true, badge: true, sound: true);
   }
 
   initializePlatform() {
     var initSettingAndroid =
-        AndroidInitializationSettings('app_notification_icon');
+    AndroidInitializationSettings('app_notification_icon');
     var initSettingIOS = IOSInitializationSettings(
         requestAlertPermission: true,
         requestBadgePermission: true,
@@ -52,8 +52,8 @@ class LocalNotifyManager {
   setOnNotificationClick(Function onNotificationClick) async {
     await flutterLocalNotificationsPlugin.initialize(initSetting,
         onSelectNotification: (String payload) async {
-      onNotificationClick(payload);
-    });
+          onNotificationClick(payload);
+        });
   }
 
   Future<void> showNotification() async {
@@ -148,7 +148,7 @@ class RecieveNotification {
   final String payload;
   RecieveNotification(
       {@required this.id,
-      @required this.title,
-      @required this.body,
-      @required this.payload});
+        @required this.title,
+        @required this.body,
+        @required this.payload});
 }

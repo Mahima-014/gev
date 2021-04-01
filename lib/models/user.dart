@@ -12,7 +12,7 @@ class User {
   String lastModifiedBy;
 
   User(
-      [this.userName,
+  {this.userName,
       this.userPhoneCountryCode,
       this.userPhone,
       this.userEmail,
@@ -21,7 +21,7 @@ class User {
       this.userIsActive,
       this.createDate,
       this.lastModifiedDate,
-      this.lastModifiedBy]);
+      this.lastModifiedBy});
 
   User.fromJson(Map<String, dynamic> json)
       : userName = json['user_name'],
