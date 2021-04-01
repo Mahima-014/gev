@@ -28,7 +28,8 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
     return Scaffold(
       appBar: Common.appBar('Feedback'),
       bottomNavigationBar: BottomNavbar(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButtonLocation:
+      FloatingActionButtonLocation.miniCenterDocked,
       floatingActionButton: FloatingHomeButton(),
       body: Center(
         child: Column(
@@ -45,82 +46,154 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
               ),
             ),
 
-
-
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: feedback.length,
-              itemBuilder: (context, index){
-                return Row(
+            Expanded(
+              child: ListView.builder(
+                //shrinkWrap: true,
+                itemCount: feedback.length,
+                itemBuilder: (context, index) {
+                  return Column(
 
                     //mainAxisAlignment: MainAxisAlignment.center,
-                    children :<Widget> [
-
-                      Card(
-                      margin: EdgeInsets.only(left: 20, right: 20),
-                      elevation: 5,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius. circular(15),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 15,bottom: 15, left: 20, right: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              children: [
-                                Text(
-                                    feedback[index].text
-                                )
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                SmoothStarRating(
-                                    allowHalfRating: true,
-                                    onRated: (v) {
-                                    },
-                                    starCount: 5,
-                                    rating: feedback[index].rating,
-                                    size: 20.0,
-                                    isReadOnly:false,
-                                    // fullRatedIconData: Icons.blur_off,
-                                    // halfRatedIconData: Icons.blur_on,
-                                    color: Color(Constant.starColor),
-                                    borderColor: Color(Constant.starColor),
-                                    spacing:0.0
-                                )
-                              ],
-                            ),
-                          ],
+                      children: <Widget>[
+                        SizedBox(
+                          height: 10,
                         ),
-                      )
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Card(
-                    margin: EdgeInsets.only(left: 20, right: 20),
-                    elevation: 5,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius. circular(15),
-                    ),
-                    child: Column(
-                      children: [
-                        TextFormField(
-                          decoration: Common.buildInputDecorationComment('Your Comment (Optional)'),
-                          maxLines: null,
-                        )
-                      ],
-                    ),
-                  ),
+                        Card(
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            elevation: 5,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 15, bottom: 15, left: 20, right: 20),
+                              child: Row(
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    children: [Text(feedback[index].text)],
+                                  ),
+                                  Column(
+                                    children: [
+                                      SmoothStarRating(
+                                          allowHalfRating: true,
+                                          onRated: (v) {},
+                                          starCount: 5,
+                                          rating: feedback[index].rating,
+                                          size: 20.0,
+                                          isReadOnly: false,
+                                          // fullRatedIconData: Icons.blur_off,
+                                          // halfRatedIconData: Icons.blur_on,
+                                          color: Color(Constant.starColor),
+                                          borderColor:
+                                          Color(Constant.starColor),
+                                          spacing: 0.0)
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            )),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Card(
+                          margin: EdgeInsets.only(left: 20, right: 20),
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Column(
+                            children: [
+                              TextFormField(
+                                decoration: Common.buildInputDecorationComment(
+                                    'Your Comment (Optional)'),
+                                maxLines: null,
+                              )
+                            ],
+                          ),
+                        ),
 
-                  ]
-                );
-              },
+                        SizedBox(
+                          height: 10,
+                        ),
+                      ]);
+                },
+              ),
             ),
 
-
+            // ListView.builder(
+            //   shrinkWrap: true,
+            //   itemCount: feedback.length,
+            //   itemBuilder: (context, index){
+            //     return Row(
+            //
+            //         //mainAxisAlignment: MainAxisAlignment.center,
+            //         children :<Widget> [
+            //
+            //           Card(
+            //           margin: EdgeInsets.only(left: 20, right: 20),
+            //           elevation: 5,
+            //           shape: RoundedRectangleBorder(
+            //             borderRadius: BorderRadius. circular(15),
+            //           ),
+            //           child: Padding(
+            //             padding: const EdgeInsets.only(top: 15,bottom: 15, left: 20, right: 20),
+            //             child: Row(
+            //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //               children: [
+            //                 Column(
+            //                   children: [
+            //                     Text(
+            //                         feedback[index].text
+            //                     )
+            //                   ],
+            //                 ),
+            //                 Column(
+            //                   children: [
+            //                     SmoothStarRating(
+            //                         allowHalfRating: true,
+            //                         onRated: (v) {
+            //                         },
+            //                         starCount: 5,
+            //                         rating: feedback[index].rating,
+            //                         size: 20.0,
+            //                         isReadOnly:false,
+            //                         // fullRatedIconData: Icons.blur_off,
+            //                         // halfRatedIconData: Icons.blur_on,
+            //                         color: Color(Constant.starColor),
+            //                         borderColor: Color(Constant.starColor),
+            //                         spacing:0.0
+            //                     )
+            //                   ],
+            //                 ),
+            //               ],
+            //             ),
+            //           )
+            //       ),
+            //       SizedBox(
+            //         height: 10,
+            //       ),
+            //       Card(
+            //         margin: EdgeInsets.only(left: 20, right: 20),
+            //         elevation: 5,
+            //         shape: RoundedRectangleBorder(
+            //           borderRadius: BorderRadius. circular(15),
+            //         ),
+            //         child: Column(
+            //           children: [
+            //             TextFormField(
+            //               decoration: Common.buildInputDecorationComment('Your Comment (Optional)'),
+            //               maxLines: null,
+            //             )
+            //           ],
+            //         ),
+            //       ),
+            //
+            //       ]
+            //     );
+            //   },
+            // ),
 
             SizedBox(
               height: 20,
@@ -136,7 +209,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                         minWidth: 120,
                         height: 42,
                         child: RaisedButton(
-                          onPressed: (){
+                          onPressed: () {
                             print('Done');
                           },
                           child: Text(
@@ -151,7 +224,8 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                               borderRadius: BorderRadius.all(
                                 const Radius.circular(8.0),
                               ),
-                              side: BorderSide(color: Color(Constant.buttonColor))),
+                              side: BorderSide(
+                                  color: Color(Constant.buttonColor))),
                         ),
                       ),
                     ],
@@ -165,7 +239,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                         minWidth: 120,
                         height: 42,
                         child: RaisedButton(
-                          onPressed: (){
+                          onPressed: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -184,7 +258,8 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                               borderRadius: BorderRadius.all(
                                 const Radius.circular(8.0),
                               ),
-                              side: BorderSide(color: Color(Constant.buttonColor))),
+                              side: BorderSide(
+                                  color: Color(Constant.buttonColor))),
                         ),
                       ),
                     ],
