@@ -44,8 +44,7 @@ class _MyAppState extends State<MyApp> {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       routes: {
-        //'/': (context) => FirstSplashScreen(),
-        '/': (context) => FeedbackScreen(),
+        '/': (context) => FirstSplashScreen(),
         '/profile': (context) => ProfileScreen(),
         '/schedule': (context) => ScheduleScreen(),
         '/supportACause': (context) => SupportACause(),

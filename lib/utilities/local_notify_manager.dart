@@ -68,8 +68,8 @@ class LocalNotifyManager {
         payload: 'New Payload');
   }
 
-  Future<void> scheduleNotification() async {
-    var scheduleNotificationDateTime = DateTime.now().add(Duration(seconds: 5));
+  Future<void> scheduleNotification(DateTime date, String title, String body, String payload) async {
+    date.add(Duration(hours: 11, minutes: 30, seconds: 0));
     var androidChannel = AndroidNotificationDetails(
         "CHANNEL_ID 1", "CHANNEL_NAME 1 ", "CHANNEL_DESCRIPTION 1",
         importance: Importance.Max,
@@ -80,7 +80,7 @@ class LocalNotifyManager {
     var iosChannel = IOSNotificationDetails();
     var platformChannel = NotificationDetails(androidChannel, iosChannel);
     await flutterLocalNotificationsPlugin.schedule(0, 'Schedule Test Title',
-        'Schedule Test Body', scheduleNotificationDateTime, platformChannel,
+        'Schedule Test Body', date, platformChannel,
         payload: 'Schedule New Payload');
   }
 
