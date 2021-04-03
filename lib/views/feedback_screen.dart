@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gev_app/controllers/feedback_controller.dart';
 import 'package:gev_app/models/feedback.dart';
 import 'package:gev_app/utilities/constants.dart';
 import 'package:gev_app/views/support_a_cause_screen.dart';
@@ -12,15 +13,16 @@ class FeedbackScreen extends StatefulWidget {
 
 class _FeedbackScreenState extends State<FeedbackScreen> {
 
-  List<FeedbackModel> feedback =[
+  FeedbackController feedbackController;
+  List<FeedbackModel> viewDetailsList;
 
-    FeedbackModel("Overall Experience", 3.0),
-    FeedbackModel("Reservation Experience", 3.0),
-    FeedbackModel("Staff Experience", 3.0),
-    FeedbackModel("Events Organization", 3.0),
-    FeedbackModel("Value For Money", 3.0),
-
-  ];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    feedbackController = FeedbackController();
+    viewDetailsList = feedbackController.getViewDetailsList();
+  }
 
   var rating=3.0;
   @override
@@ -49,7 +51,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
             Expanded(
               child: ListView.builder(
                 //shrinkWrap: true,
-                itemCount: feedback.length,
+                itemCount: viewDetailsList.length,
                 itemBuilder: (context, index) {
                   return Column(
 
@@ -72,7 +74,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                 MainAxisAlignment.spaceBetween,
                                 children: [
                                   Column(
-                                    children: [Text(feedback[index].text)],
+                                    children: [Text(viewDetailsList[index].text)],
                                   ),
                                   Column(
                                     children: [
@@ -80,7 +82,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                           allowHalfRating: true,
                                           onRated: (v) {},
                                           starCount: 5,
-                                          rating: feedback[index].rating,
+                                          rating: viewDetailsList[index].rating,
                                           size: 20.0,
                                           isReadOnly: false,
                                           // fullRatedIconData: Icons.blur_off,

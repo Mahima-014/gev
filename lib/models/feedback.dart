@@ -4,9 +4,6 @@ class FeedbackModel{
   String text;
   double rating;
 
-  FeedbackModel(String text, double rating){
-   this.text = text;
-   this.rating = rating;
-  }
+  FeedbackModel({this.text, this.rating});
 
 }
