@@ -3,19 +3,21 @@ import 'package:gev_app/controllers/event_controller.dart';
 import 'package:gev_app/models/event_list_model.dart';
 import 'package:gev_app/utilities/commons.dart';
 import 'package:gev_app/utilities/constants.dart';
-
 import '../utilities/commons.dart';
 
+// Event Screen to get the details of each and every event in  GEV.
 class EventScreen extends StatefulWidget {
   @override
   _EventScreenState createState() => _EventScreenState();
 }
 
 class _EventScreenState extends State<EventScreen> {
+
   EventController eventController = EventController();
   List<EventListModel> eventList;
   int selectedYear;
   String selectedMonth;
+
 
   @override
   void initState() {
@@ -23,6 +25,7 @@ class _EventScreenState extends State<EventScreen> {
     super.initState();
     eventList = eventController.getEventList(selectedYear,selectedMonth);
   }
+
 
   @override
   Widget build(BuildContext context) {

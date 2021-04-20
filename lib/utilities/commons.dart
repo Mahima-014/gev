@@ -7,6 +7,7 @@ import 'package:gev_app/views/home.dart';
 import 'package:gev_app/views/profile_screen.dart';
 import 'package:gev_app/views/schedule_screen.dart';
 import 'package:gev_app/views/view_check_in_screen.dart';
+import 'package:intl/intl.dart';
 
 class Common {
   //App Bar
@@ -24,31 +25,10 @@ class Common {
         color: Colors.black,
       ),
       backgroundColor: Color(Constant.appBarBackgroundColor),
-      // actions: <Widget>[
-      //   PopupMenuButton<String>(
-      //     onSelected: (String value) {
-      //       switch (value) {
-      //         case 'Logout':
-      //           break;
-      //         case 'Settings':
-      //           break;
-      //       }
-      //     },
-      //     itemBuilder: (BuildContext context) {
-      //       return {'Logout', 'Settings'}.map((String choice) {
-      //         return PopupMenuItem<String>(
-      //           value: choice,
-      //           child: Text(choice),
-      //         );
-      //       }).toList();
-      //     },
-      //   ),
-      //],
     );
   }
 
   //appbar with logout button
-
   static AppBar appBarWithLogout(String title) {
     return AppBar(
       title: Text(
@@ -92,7 +72,7 @@ class Common {
     return BoxDecoration(
       image: DecorationImage(
         image: AssetImage("assets/images/gev_background.jpeg"),
-        fit: BoxFit.fitHeight,
+        fit: BoxFit.cover,
       ),
     );
   }
@@ -133,6 +113,7 @@ class Common {
       ),
     );
   }
+
 
   static InputDecoration buildInputDecorationComment(String hinttext) {
     return InputDecoration(
@@ -192,6 +173,44 @@ class Common {
   {
     List<String> monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     return monthList;
+  }
+
+  static String convertDateTimeToString(DateTime date)
+  {
+    return date.toIso8601String();
+  }
+
+  static DateTime convertStringToDateTime(String date)
+  {
+    return DateTime.parse(date);
+  }
+
+  static TimeOfDay convertStringToTimeOfDay(String time)
+  {
+    int hour;
+    int minute;
+    String ampm = time.substring(time.length - 2);
+    String result = time.substring(0, time.indexOf(' '));
+    if (ampm == 'AM' && int.parse(result.split(":")[1]) != 12) {
+      hour = int.parse(result.split(':')[0]);
+      if (hour == 12) hour = 0;
+      minute = int.parse(result.split(":")[1]);
+    } else {
+      hour = int.parse(result.split(':')[0]) - 12;
+      if (hour <= 0) {
+        hour = 24 + hour;
+      }
+      minute = int.parse(result.split(":")[1]);
+    }
+    return TimeOfDay(hour: hour, minute: minute);
+  }
+
+  static String convertTimeOfDayToString(TimeOfDay time)
+  {
+    final now = new DateTime.now();
+    final dt = DateTime(now.year, now.month, now.day, time.hour, time.minute);
+    final format = DateFormat.jm();  //"6:00 AM"
+    return format.format(dt);
   }
 
 }
@@ -264,8 +283,6 @@ class _BottomNavbarState extends State<BottomNavbar> {
         unselectedItemColor: Colors.brown,
         // showUnselectedLabels: true,
         fixedColor: Colors.brown,
-        // selectedItemColor: Colors.brown,
-        // unselectedLabelStyle: TextStyle(color: Colors.black),
         onTap: (index) {
           switch (index) {
             case 0:
@@ -292,6 +309,8 @@ class _BottomNavbarState extends State<BottomNavbar> {
     );
   }
 }
+
+// Floating home button.
 
 class FloatingHomeButton extends StatelessWidget {
   @override

@@ -8,12 +8,13 @@ class Preferences{
   static String mobileUserDetailsKey = 'mobile_user_details_key';
 
 
-
+  //To intialize the preferences.
   static void initialize() async
   {
     prefs = await SharedPreferences.getInstance();
   }
 
+  //To set the preferences.
   void setPreferences(String key, String value)
   {
     //initialize();
@@ -21,6 +22,7 @@ class Preferences{
 
   }
 
+  // To get the preferences.
   String getPreferences(String key)
   {
     //initialize();

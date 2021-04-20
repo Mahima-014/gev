@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:gev_app/utilities/db_manager.dart';
 import 'package:gev_app/views/second_splash_screen.dart';
 import 'package:gev_app/views/first_splash_screen.dart';
 import 'package:gev_app/views/login.dart';
 import 'package:gev_app/views/home.dart';
 import 'package:gev_app/views/register.dart';
+import 'package:gev_app/views/view_walk_in_screen.dart';
 import 'package:gev_app/views/walkin.dart';
 import 'package:gev_app/utilities/preferences.dart';
 import 'package:gev_app/views/check_in_screen.dart';
@@ -44,7 +46,8 @@ class _MyAppState extends State<MyApp> {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       routes: {
-        '/': (context) => FirstSplashScreen(),
+        '/': (context) => Walkin(),
+        //'/': (context) => FirstSplashScreen(),
         '/profile': (context) => ProfileScreen(),
         '/schedule': (context) => ScheduleScreen(),
         '/supportACause': (context) => SupportACause(),
@@ -57,6 +60,7 @@ class _MyAppState extends State<MyApp> {
         '/home': (context) => MyHomePage(),
         '/register': (context) => Register(),
         '/walkin': (context) => Walkin(),
+        '/viewWalkIn':(context)=>ViewWalkInScreen('assets/images/Walk_in_ticket.png'),
       },
     );
   }
@@ -66,6 +70,7 @@ class _MyAppState extends State<MyApp> {
     SharedPreferences.getInstance().then((prefs) {
       setState(() => Preferences.prefs = prefs);
     });
+    DbManager.connectToDB();
   }
 }
 

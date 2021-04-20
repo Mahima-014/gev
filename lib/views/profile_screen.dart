@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:gev_app/utilities/commons.dart';
 import 'package:gev_app/utilities/constants.dart';
 
+
+//Profile Screen.
+//Screen to update user's profile.
+
 class ProfileScreen extends StatefulWidget {
   @override
   _ProfileScreenState createState() => _ProfileScreenState();

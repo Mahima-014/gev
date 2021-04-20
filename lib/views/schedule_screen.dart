@@ -5,6 +5,8 @@ import 'package:gev_app/controllers/schedule_controller.dart';
 import 'package:gev_app/models/schedule_list_model.dart';
 import 'package:gev_app/utilities/commons.dart';
 
+
+// Screen to get the schedule for events in GEV.
 class ScheduleScreen extends StatefulWidget {
   @override
   _ScheduleScreenState createState() => _ScheduleScreenState();

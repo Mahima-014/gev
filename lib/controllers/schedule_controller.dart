@@ -3,6 +3,8 @@ import 'package:gev_app/models/schedule_list_model.dart';
 
 class ScheduleController
 {
+
+  // List to get the temples and their details for item builder.
   List<ScheduleListModel> getTempleList()
   {
       List<ScheduleListModel> scheduleList = [
@@ -11,7 +13,6 @@ class ScheduleController
         ScheduleListModel(imageText:"Temple 3",imageUrl:"assets/images/temple2.jpg", name:"Vrindavan Behari",time :"time",description:"description"),
         ScheduleListModel(imageText:"Temple 4",imageUrl:"assets/images/temple4.jpeg",name:"Vridavan Forest",time :"time",description:"description"),
       ];
-      print("getTempleList() : ${scheduleList[0].name}");
       return scheduleList;
   }
 

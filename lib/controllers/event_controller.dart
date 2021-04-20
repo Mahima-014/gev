@@ -6,6 +6,8 @@ import 'package:gev_app/utilities/db_manager.dart';
 class EventController
 {
   DbManager dbManager;
+
+  // List to get events for the item builder.
   List<EventListModel> getEventList(int year, String month)
   {
 
@@ -21,6 +23,7 @@ class EventController
 
   }
 
+  // Dummy code for generating notification.
   void setNotifications()
   {
     // LocalNotifyManager.localNotifyManager = LocalNotifyManager.init();

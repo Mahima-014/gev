@@ -2,6 +2,8 @@ import 'package:gev_app/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LogInController {
+
+  // Function for login.
   void login(User user) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     if (prefs.getString('phoneNo') == user.userPhone.toString()) {
@@ -10,6 +12,7 @@ class LogInController {
     }
   }
 
+  // Function for logout.
   void logout() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString("isLoggedIn", "false");

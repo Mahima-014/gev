@@ -8,6 +8,8 @@ import 'package:gev_app/utilities/home_section7.dart';
 import 'package:gev_app/utilities/SizedBox.dart';
 import 'package:gev_app/controllers/login_controller.dart';
 
+// Home screen.
+
 class MyHomePage extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();

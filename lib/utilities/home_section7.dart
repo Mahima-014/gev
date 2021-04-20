@@ -18,7 +18,6 @@ class _HomeSection7State extends State<HomeSection7> {
     super.initState();
     setState(() {
       feedbackList = feedbackController.getFeedbackList();
-      print(feedbackList[0].text);
     });
   }
 

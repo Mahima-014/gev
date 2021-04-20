@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 class MobileUserDetails {
+  int id;
   int userId;
   String visitType;
   String checkInDate;
@@ -13,9 +14,12 @@ class MobileUserDetails {
   String createdBy;
   String lastModifiedDate;
   String lastModifiedBy;
+  String slotTimeStart;
+  String slotTimeEnd;
 
   MobileUserDetails(
-      [this.userId,
+      [ this.id,
+      this.userId,
       this.visitType,
       this.checkInDate,
       this.checkOutDate,
@@ -26,12 +30,15 @@ class MobileUserDetails {
       this.createDate,
       this.createdBy,
       this.lastModifiedDate,
-      this.lastModifiedBy]);
+      this.lastModifiedBy,
+      this.slotTimeStart,
+      this.slotTimeEnd]);
 
 
 
   MobileUserDetails.fromJson(Map<String, dynamic> json)
-      : userId = json['user_id'],
+      : id = json['id'],
+        userId = json['user_id'],
         visitType = json['visit_type'],
         checkInDate = json['check_in_date'],
         checkOutDate = json['check_out_date'],
@@ -42,9 +49,13 @@ class MobileUserDetails {
         createDate = json['create_date'],
         createdBy = json['created_by'],
         lastModifiedDate = json['last_modified_date'],
-        lastModifiedBy = json['last_modified_by'];
+        lastModifiedBy = json['last_modified_by'],
+        slotTimeStart=json['Slot_time_start'],
+        slotTimeEnd=json['Slot_time_end'];
+
 
   Map<String, dynamic> toJson() => {
+        'id': id,
         'user_id': userId,
         'visit_type': visitType,
         'check_in_date': checkInDate,
@@ -57,5 +68,7 @@ class MobileUserDetails {
         'created_by': createdBy,
         'last_modified_date': lastModifiedDate,
         'last_modified_by': lastModifiedBy,
+        'Slot_time_start':slotTimeStart,
+        'Slot_time_end':slotTimeEnd,
       };
 }

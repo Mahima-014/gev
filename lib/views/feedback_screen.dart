@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gev_app/controllers/feedback_controller.dart';
 import 'package:gev_app/models/feedback.dart';
+import 'package:gev_app/models/feedback_list_model.dart';
 import 'package:gev_app/utilities/constants.dart';
 import 'package:gev_app/views/support_a_cause_screen.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:gev_app/utilities/commons.dart';
 
+
+// Screen to get the feedback of user.
 class FeedbackScreen extends StatefulWidget {
   @override
   _FeedbackScreenState createState() => _FeedbackScreenState();
@@ -14,7 +17,7 @@ class FeedbackScreen extends StatefulWidget {
 class _FeedbackScreenState extends State<FeedbackScreen> {
 
   FeedbackController feedbackController;
-  List<FeedbackModel> viewDetailsList;
+  List<FeedbackListModel> viewDetailsList;
 
   @override
   void initState() {

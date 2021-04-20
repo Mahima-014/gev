@@ -13,6 +13,8 @@ class CheckInController {
 
   CheckInController({this.context});
 
+
+  //To save user and mobile details in preference.
   void saveUserAndMobileUserDetailsInPreferences(
       User user, MobileUserDetails mobileUserDetails) {
     String userJson = jsonEncode(user.toJson());
@@ -24,6 +26,7 @@ class CheckInController {
     print(preferences.getPreferences(Preferences.mobileUserDetailsKey));
   }
 
+  // To get the user model from preferences.
   User getUserModelFromPreferences() {
     String userJson = preferences.getPreferences(Preferences.userKey);
     Map userMap = jsonDecode(userJson);
@@ -32,6 +35,7 @@ class CheckInController {
     return userModel;
   }
 
+  // To get mobile user details model from preferences.
   MobileUserDetails getMobileUserDetailsModelFromPreferences() {
     String mobileUserDetailsJson =
         preferences.getPreferences(Preferences.mobileUserDetailsKey);
@@ -44,19 +48,24 @@ class CheckInController {
 
   //Controller for feedback notification.
 
+
+  // To generate feedback notifications.
   feedbackNotification(DateTime checkOutDate) async {
     LocalNotifyManager.localNotifyManager = LocalNotifyManager.init();
     LocalNotifyManager.localNotifyManager
         .setOnNotificationReceive(onNotificationReceive);
     LocalNotifyManager.localNotifyManager
         .setOnNotificationClick(onNotificationClick);
-    await LocalNotifyManager.localNotifyManager.scheduleNotification(checkOutDate,'Feedback', 'Please give us feedback', '');
+    await LocalNotifyManager.localNotifyManager.scheduleNotification(checkOutDate, 101, 'Feedback', 'Please give us feedback', 'Feedback');
   }
 
+
+  // Handles what to do on receiving notifications.
   onNotificationReceive(RecieveNotification notification) {
     print('Notification Recieved: ${notification.id}');
   }
 
+  // Handles what to do when notification clicked.
   onNotificationClick(String payload) {
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return FeedbackScreen();

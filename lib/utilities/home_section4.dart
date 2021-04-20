@@ -17,7 +17,6 @@ class _HomeSection4State extends State<HomeSection4> {
     super.initState();
     setState(() {
       templeList = scheduleController.getTempleList();
-      print(templeList[0].imageUrl);
     });
   }
 

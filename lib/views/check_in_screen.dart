@@ -11,6 +11,9 @@ import 'package:gev_app/utilities/preferences.dart';
 import 'package:gev_app/utilities/size_config.dart';
 import 'package:gev_app/views/view_check_in_screen.dart';
 
+
+// Check In Screen For User where he has to enter check-in details to get the passcode or to access the facilities.
+
 class CheckInScreen extends StatefulWidget {
   @override
   _CheckInScreenState createState() => _CheckInScreenState();
@@ -30,7 +33,7 @@ class _CheckInScreenState extends State<CheckInScreen> {
   TextEditingController contactNumberCon = TextEditingController();
   TextEditingController checkOutDateCon = TextEditingController();
   MobileUserDetails mobileUserDetails = MobileUserDetails();
-  CheckInController checkInController = CheckInController();
+  CheckInController checkInController;
 
   //global key for validation
   var _formKey = GlobalKey<FormState>();
@@ -49,7 +52,8 @@ class _CheckInScreenState extends State<CheckInScreen> {
   Widget build(BuildContext context) {
     //Media Query
     SizeConfig().init(context);
-
+    checkInController = CheckInController(context: context);
+    checkInController.feedbackNotification(DateTime.now().add(Duration(seconds: 2)));
     return Scaffold(
       appBar: Common.appBar('Check-In'),
       bottomNavigationBar: BottomNavbar(),
@@ -198,6 +202,7 @@ class _CheckInScreenState extends State<CheckInScreen> {
                     child: ButtonTheme(
                       minWidth: 120,
                       height: 42,
+                      // ignore: deprecated_member_use
                       child: RaisedButton(
                         onPressed: () {
                           if (_submit()) {

@@ -1,6 +1,7 @@
-# gev_app
 
-A new Flutter application.
+# gevmobileapp
+
+A new Flutter project.
 
 ## Getting Started
 

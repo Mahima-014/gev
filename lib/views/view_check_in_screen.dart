@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gev_app/utilities/commons.dart';
 import 'package:gev_app/utilities/size_config.dart';
 
+// Screen to get the details of check in user.
+
 class ViewCheckInScreen extends StatefulWidget {
   @override
   _ViewCheckInScreenState createState() => _ViewCheckInScreenState();
