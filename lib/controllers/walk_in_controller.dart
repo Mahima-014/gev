@@ -21,22 +21,31 @@ class WalkInController {
   }
 
   //save time slot and additional member in db.
-  saveDataInDB(MobileUserDetails mobileUserDetails) {
-    mobileUserDetails = checkTimeSlot(mobileUserDetails);
+   saveDataInDB(MobileUserDetails mobileUserDetails) async{
+
     dbManager = DbManager();
+
+    int id = await dbManager.getLastID(Constant.mobile_user_details);
+
+    mobileUserDetails = checkTimeSlot(mobileUserDetails);
     // dbManager.createTableIfNotExists(Constant.mobile_user_details,
     //     Constant.queryToCreateMobileUserDetailsTable);
-    dbManager.getLastID(Constant.mobile_user_details);
-    if (DbManager.lastID == 1) {
+    print('Inside saveDataInDB');
+    if (id == 1) {
+      print('Inside saveDataInDB lastId==1');
       dbManager.update(
-          Constant.mobile_user_details, mobileUserDetails.toJson());
+          Constant.mobile_user_details, mobileUserDetails.toJson(), 'id = 1');
+      dbManager.getLastID(Constant.mobile_user_details);
     } else {
+      print('Inside saveDataInDB lastId!=1');
       dbManager.insert(
           Constant.mobile_user_details, mobileUserDetails.toJson());
+      dbManager.getLastID(Constant.mobile_user_details);
     }
 
-    dbManager.getRecords(Constant.queryToGetAllRecordsOfMobileUserDetailsTable);
+    List<Map> list = await dbManager.getRecords(Constant.queryToGetAllRecordsOfMobileUserDetailsTable);
     navigateToCorrectScreen(mobileUserDetails);
+
   }
 
   // function to check time slot.

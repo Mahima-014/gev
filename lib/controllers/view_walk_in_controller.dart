@@ -4,10 +4,11 @@ import 'package:gev_app/utilities/db_manager.dart';
 
 class ViewWalkInController {
 
-   getDataList()
+   Future<List<Map>> getDataList() async
   {
     DbManager dbManager = DbManager();
-    dbManager.getRecords(Constant.queryToGetAllRecordsOfMobileUserDetailsTable);
+    List<Map> list = await dbManager.getRecords(Constant.queryToGetAllRecordsOfMobileUserDetailsTable);
+    return list;
   }
 
 }

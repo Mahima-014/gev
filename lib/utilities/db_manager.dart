@@ -23,6 +23,7 @@ class DbManager{
         Constant.queryToCreateMobileUserDetailsTable
       );
     });
+    print('Iitialized DB');
   }
 
   // Determine whether the table exists.
@@ -75,13 +76,14 @@ class DbManager{
       // Get the records
       list = await database.rawQuery(query);
       print("getRecords : $list");
-      return list;
     }
     catch(e)
     {
-      print("EXCEPTION getRecords: "+ e);
+      print("EXCEPTION getRecords: ${e.toString()}");
+      return null;
     }
 
+    return list;
   }
 
   // To delete data from table.
@@ -92,9 +94,9 @@ class DbManager{
   }
 
   // To update the data from table.
-  update(String tableName, Map map) async {
+  update(String tableName, Map map, String where) async {
     //var values = {'name':'my_name','type':'my_type'};
-    await database.update(tableName, map, where: 'id = 1');
+    await database.update(tableName, map, where: where);
   }
 
 
@@ -106,13 +108,14 @@ class DbManager{
      List<Map> listOfLastInsertedID = await database.rawQuery('SELECT * FROM $tableName ORDER BY id DESC LIMIT 1');
      lastID = listOfLastInsertedID.elementAt(0).values.elementAt(0);
      print('LastID : $lastID');
-     return lastID;
    }
    catch(e)
     {
-      print("EXCEPTION getLastID: "+ e);
+      print("EXCEPTION getLastID: ${e.toString()}");
       return -2;
     }
+
+   return lastID;
   }
 
 

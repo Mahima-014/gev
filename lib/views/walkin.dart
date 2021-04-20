@@ -35,6 +35,7 @@ class _WalkinState extends State<Walkin> {
     walkInController = WalkInController(context: context);
     timeSlots = walkInController.getTimeSlots();
     SizeConfig().init(context);
+
     return Scaffold(
       appBar: Common.appBar('Walk In'),
       bottomNavigationBar: BottomNavbar(),
