@@ -65,15 +65,17 @@ class WalkInController {
     }
   }
 
+
+  //This function navigates to the Green Ticket or Brown Ticket according to time slot
   navigateToCorrectScreen(MobileUserDetails mobileUserDetails)
   {
     if(Common.convertStringToTimeOfDay(mobileUserDetails.slotTimeStart).hour == 10)
       {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => ViewWalkInScreen('assets/images/Walk_in_ticket.png')),);
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ViewWalkInScreen('assets/images/Walk_in_ticket.png')),);
       }
     else if(Common.convertStringToTimeOfDay(mobileUserDetails.slotTimeStart).hour == 13)
     {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => ViewWalkInScreen('assets/images/walk_in_ticket_green.png')),);
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ViewWalkInScreen('assets/images/walk_in_ticket_green.png')),);
     }
 
   }

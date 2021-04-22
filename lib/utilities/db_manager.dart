@@ -86,10 +86,17 @@ class DbManager{
   }
 
   // To delete data from table.
-  delete(String tableName, List list) async {
-    var myWhere = 'name = ?';
+  delete(String tableName, String where, List list) async {
+    //var myWhere = 'name = ?';
     //var myArgs = ['cat'];
-    await database.delete(tableName, where: myWhere, whereArgs: list);
+    try{
+      await database.delete(tableName, where: where, whereArgs: list);
+      print('Deleted: $tableName');
+    }
+    catch(e)
+    {
+      print("EXCEPTION delete: ${e.toString()}");
+    }
   }
 
   // To update the data from table.

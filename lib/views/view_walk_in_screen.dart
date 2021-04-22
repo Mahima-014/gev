@@ -35,7 +35,7 @@ class _ViewWalkInScreenState extends State<ViewWalkInScreen> {
   Widget build(BuildContext context) {
     print('Inside Widget build of Walkin Screen');
     print("initState : $list");
-
+    SizeConfig().init(context);
     return SafeArea(
       child: Scaffold(
         appBar: Common.appBar('View Walk-In'),

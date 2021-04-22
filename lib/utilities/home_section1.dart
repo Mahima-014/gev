@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gev_app/controllers/home_controller.dart';
 import 'package:gev_app/utilities/commons.dart';
 import 'package:gev_app/views/check_in_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -10,6 +11,17 @@ class HomeSection1 extends StatefulWidget {
 }
 
 class _HomeSection1State extends State<HomeSection1> {
+
+  HomeController homeController = HomeController();
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -87,7 +99,9 @@ class _HomeSection1State extends State<HomeSection1> {
                         // minimumSize: MaterialStateProperty.all(),
                       ),
                       onPressed: () async {
-                        if(DateTime.now().isAfter(Common.convertTimeOfDayToDateTime(TimeOfDay(hour: 16, minute: 1))))
+
+                        //Show Snackbar and restrict the navigation to next screen if the time is between 4:05 PM to 12:00 AM
+                        if(!(DateTime.now().isBefore(Common.convertTimeOfDayToDateTime(TimeOfDay(hour: 16, minute: 5))) && DateTime.now().isAfter(Common.convertTimeOfDayToDateTime(TimeOfDay(hour: 0, minute: 0)))))
                           {
                             final snackBar = SnackBar(
                               content: Text('No time slots are available for today'),
@@ -104,8 +118,7 @@ class _HomeSection1State extends State<HomeSection1> {
 
                         if (prefs.getString('isSkippedUser') == "true") {
                         } else {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (_) => Walkin()));
+                          homeController.navigateToCorrectScreen(context);
                         }
                       },
                       child: new Text(

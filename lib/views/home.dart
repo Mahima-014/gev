@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gev_app/controllers/home_controller.dart';
 import 'package:gev_app/utilities/commons.dart';
 import 'package:gev_app/utilities/home_section1.dart';
 import 'package:gev_app/utilities/home_section2.dart';
@@ -16,6 +17,14 @@ class MyHomePage extends StatefulWidget {
 
 class _HomeState extends State<MyHomePage> {
   LogInController logInController = LogInController();
+  HomeController homeController= HomeController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    homeController.refreshDB();
+    print('Inside HomeScreen init');
+  }
 
   @override
   Widget build(BuildContext context) {
