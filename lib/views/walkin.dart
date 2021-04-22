@@ -4,8 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:gev_app/controllers/walk_in_controller.dart';
 import 'package:gev_app/utilities/SizedBox.dart';
 import 'package:gev_app/utilities/commons.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:gev_app/utilities/textFields.dart';
 import 'package:gev_app/models/mobile_user_details.dart';
 
 class Walkin extends StatefulWidget {
@@ -20,15 +18,6 @@ class _WalkinState extends State<Walkin> {
   List<String> timeSlots;
   String selectedTimeSlot;
 
-  @override
-  void initState() {
-    super.initState();
-
-    // _loadUserInfo();
-
-    //selectedTimeSlot = timeSlots[0];
-    //print(selectedTimeSlot);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +33,6 @@ class _WalkinState extends State<Walkin> {
       floatingActionButton: FloatingHomeButton(),
       body: SingleChildScrollView(
         child: Container(
-          // height: SizeConfig.screenHeight/2,
-          //  width: SizeConfig.screenWidth,
           decoration: Common.background(),
           child: Column(
             children: [
@@ -185,7 +172,7 @@ class _WalkinState extends State<Walkin> {
                 ),
               ),
               SizedBox(
-                height: SizeConfig.screenHeight / 17,
+                height: SizeConfig.screenHeight / 15,
               )
             ],
           ),

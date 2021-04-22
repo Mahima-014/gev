@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:gev_app/views/second_splash_screen.dart';
-import 'package:gev_app/utilities/SizedBox.dart';
 
 class FirstSplashScreen extends StatefulWidget {
   @override

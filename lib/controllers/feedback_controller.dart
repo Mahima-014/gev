@@ -1,9 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:gev_app/models/feedback.dart';
 import 'package:gev_app/models/feedback_list_model.dart';
 import 'package:gev_app/utilities/constants.dart';
 import 'package:gev_app/utilities/db_manager.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class FeedbackController {
 

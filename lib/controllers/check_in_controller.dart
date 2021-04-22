@@ -5,7 +5,6 @@ import 'package:gev_app/models/mobile_user_details.dart';
 import 'package:gev_app/utilities/local_notify_manager.dart';
 import 'package:gev_app/utilities/preferences.dart';
 import 'package:gev_app/views/feedback_screen.dart';
-import 'package:path/path.dart';
 
 class CheckInController {
   BuildContext context;

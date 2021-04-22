@@ -4,7 +4,6 @@ import 'package:gev_app/utilities/textFields.dart';
 import 'package:gev_app/utilities/validation.dart';
 import 'package:gev_app/controllers/register_controller.dart';
 import 'package:gev_app/models/user.dart';
-import 'package:gev_app/utilities/SizedBox.dart';
 import 'package:gev_app/utilities/internet_connection.dart';
 
 

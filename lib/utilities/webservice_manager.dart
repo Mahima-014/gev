@@ -31,7 +31,7 @@ class WebserviceManager{
     Response response = await post(mainUrl, headers: headers, body: json);
     // check the status code for the result
     int statusCode = response.statusCode;
-    print(mainUrl +' : ${statusCode}');
+    print(mainUrl +' : $statusCode');
     // this API passes back the id of the new item added to the body
     String body = response.body;
     print('responseBody : '+body);

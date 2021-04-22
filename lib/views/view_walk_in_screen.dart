@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_countdown_timer/index.dart';
 import 'package:gev_app/controllers/view_walk_in_controller.dart';
 import 'package:gev_app/utilities/SizedBox.dart';
 import 'package:gev_app/utilities/commons.dart';
-import 'package:gev_app/utilities/db_manager.dart';
-import 'package:gev_app/utilities/textFields.dart';
+import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 
 class ViewWalkInScreen extends StatefulWidget {
   String imageUrl;
@@ -34,7 +34,7 @@ class _ViewWalkInScreenState extends State<ViewWalkInScreen> {
   @override
   Widget build(BuildContext context) {
     print('Inside Widget build of Walkin Screen');
-    print("initState : ${list}");
+    print("initState : $list");
 
     return SafeArea(
       child: Scaffold(
@@ -63,13 +63,6 @@ class _ViewWalkInScreenState extends State<ViewWalkInScreen> {
                   height: SizeConfig.screenHeight/15,
                 ),
                 Center(
-                  // child: Text(
-                  //   'Number of visitors - ${DbManager.list[0]['additional_member']}',
-                  //   style: TextStyle(
-                  //     fontWeight: FontWeight.w900,
-                  //     fontSize: 20,
-                  //   ),
-                  // ),
                   child: list == null
                       ? Text('Loading...')
                       : FutureBuilder(
@@ -101,13 +94,46 @@ class _ViewWalkInScreenState extends State<ViewWalkInScreen> {
                   height: SizeConfig.screenHeight/245,
                 ),
                 Center(
-                  child: Text(
-                    'Time Remaining : $timeRemaining',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w900,
-                      fontSize: 20,
-                    ),
-                  ),
+                  child: list == null
+                      ? Text('Loading...')
+                      : FutureBuilder(
+                      future: list,
+                      builder: (context, snapshot) {
+                        if(snapshot.hasData) {
+                          return Row(
+                            mainAxisAlignment:
+                            MainAxisAlignment.center,
+                            children: [
+                              CountdownTimer(
+                                endTime: Common.convertTimeOfDayToDateTime(Common.convertStringToTimeOfDay(snapshot.data[0]['Slot_time_end'])).millisecondsSinceEpoch,
+                                widgetBuilder: (_, CurrentRemainingTime time) {
+                                  if (time == null) {
+                                    return Text(
+                                        'Please return to the main gate',
+                                        style:TextStyle(
+                                                  fontWeight: FontWeight.w900,
+                                                  fontSize: 20,
+                                                ),
+                                    );
+
+                                  }
+                                  return Text(
+                                      'Time Remaining: [ hours: [ ${time.hours} ], min: [ ${time.min} ], sec: [ ${time.sec}0 ]',
+                                    style:TextStyle(
+                                      fontWeight: FontWeight.w900,
+                                      fontSize: 20,
+                                    ),
+                                  );
+                                },
+                              ),
+                            ],
+                          );
+                        } else if(snapshot.hasError) {
+                          return Text('');
+                        } else {
+                          return CircularProgressIndicator();
+                        }
+                      }),
                 ),
               ],
             ),

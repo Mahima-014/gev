@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gev_app/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
 import 'package:gev_app/controllers/register_controller.dart';
-import 'package:gev_app/utilities/SizedBox.dart';
-import 'package:gev_app/views/register.dart';
 
 class SecondSplashScreen extends StatefulWidget {
   @override

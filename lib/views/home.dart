@@ -5,7 +5,6 @@ import 'package:gev_app/utilities/home_section2.dart';
 import 'package:gev_app/utilities/home_section3.dart';
 import 'package:gev_app/utilities/home_section4.dart';
 import 'package:gev_app/utilities/home_section7.dart';
-import 'package:gev_app/utilities/SizedBox.dart';
 import 'package:gev_app/controllers/login_controller.dart';
 
 // Home screen.

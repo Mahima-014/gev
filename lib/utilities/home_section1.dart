@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gev_app/utilities/commons.dart';
 import 'package:gev_app/views/check_in_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:gev_app/views/walkin.dart';
@@ -86,6 +87,18 @@ class _HomeSection1State extends State<HomeSection1> {
                         // minimumSize: MaterialStateProperty.all(),
                       ),
                       onPressed: () async {
+                        if(DateTime.now().isAfter(Common.convertTimeOfDayToDateTime(TimeOfDay(hour: 16, minute: 1))))
+                          {
+                            final snackBar = SnackBar(
+                              content: Text('No time slots are available for today'),
+                            );
+
+                            // Find the ScaffoldMessenger in the widget tree
+                            // and use it to show a SnackBar.
+                            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                            return;
+                          }
+                        
                         SharedPreferences prefs =
                             await SharedPreferences.getInstance();
 

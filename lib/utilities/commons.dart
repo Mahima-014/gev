@@ -2,11 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gev_app/utilities/constants.dart';
 import 'package:gev_app/views/event_screen.dart';
-import 'package:gev_app/views/feedback_screen.dart';
 import 'package:gev_app/views/home.dart';
 import 'package:gev_app/views/profile_screen.dart';
 import 'package:gev_app/views/schedule_screen.dart';
-import 'package:gev_app/views/view_check_in_screen.dart';
 import 'package:intl/intl.dart';
 
 class Common {
@@ -72,7 +70,7 @@ class Common {
     return BoxDecoration(
       image: DecorationImage(
         image: AssetImage("assets/images/gev_background.jpeg"),
-        fit: BoxFit.cover,
+        fit: BoxFit.fill,
       ),
     );
   }
@@ -213,6 +211,13 @@ class Common {
     return format.format(dt);
   }
 
+  //Function to convert TimeOfDay into DateTime.
+
+  static DateTime convertTimeOfDayToDateTime(TimeOfDay time)
+  {
+    final now = new DateTime.now();
+    return new DateTime(now.year, now.month, now.day, time.hour, time.minute);
+  }
 }
 
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gev_app/utilities/db_manager.dart';
-import 'package:gev_app/views/second_splash_screen.dart';
 import 'package:gev_app/views/first_splash_screen.dart';
+import 'package:gev_app/views/second_splash_screen.dart';
 import 'package:gev_app/views/login.dart';
 import 'package:gev_app/views/home.dart';
 import 'package:gev_app/views/register.dart';
@@ -46,8 +46,7 @@ class _MyAppState extends State<MyApp> {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       routes: {
-        '/': (context) => Walkin(),
-        //'/': (context) => FirstSplashScreen(),
+       '/': (context) => FirstSplashScreen(),
         '/profile': (context) => ProfileScreen(),
         '/schedule': (context) => ScheduleScreen(),
         '/supportACause': (context) => SupportACause(),

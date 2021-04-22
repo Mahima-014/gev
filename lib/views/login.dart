@@ -4,7 +4,6 @@ import 'package:gev_app/utilities/textFields.dart';
 import 'package:gev_app/utilities/validation.dart';
 import 'package:gev_app/controllers/login_controller.dart';
 import 'package:gev_app/models/user.dart';
-import 'package:gev_app/utilities/SizedBox.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
