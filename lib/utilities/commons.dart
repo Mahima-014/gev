@@ -160,7 +160,7 @@ class Common {
   static List<int> getYearList()
   {
     List<int> yearList = [];
-    for(int i=DateTime.now().year; i>=2010; i--)
+    for(int i=DateTime.now().year; i>=2020; i--)
       yearList.add(i);
 
     return yearList;
@@ -171,6 +171,12 @@ class Common {
   {
     List<String> monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     return monthList;
+  }
+
+  static List<String> getMoneyFilterList()
+  {
+    List<String> moneyFilterList = ["Paid","Unpaid"];
+    return moneyFilterList;
   }
 
   static String convertDateTimeToString(DateTime date)
@@ -202,6 +208,8 @@ class Common {
     }
     return TimeOfDay(hour: hour, minute: minute);
   }
+
+  //Function to convert time of day into string
 
   static String convertTimeOfDayToString(TimeOfDay time)
   {

@@ -1,0 +1,4 @@
+#Sat Apr 24 11:38:42 IST 2021
+base.0=E\:\\Internship\\gevmobileapp\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

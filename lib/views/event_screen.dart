@@ -17,6 +17,7 @@ class _EventScreenState extends State<EventScreen> {
   List<EventListModel> eventList;
   int selectedYear;
   String selectedMonth;
+  String selectedFilter;
 
 
   @override
@@ -39,14 +40,15 @@ class _EventScreenState extends State<EventScreen> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 30, right: 50, top: 30),
+              padding: const EdgeInsets.only(left: 10, right: 5, top: 30),
+              //padding: const EdgeInsets.all(0),
               child: Container(
                 height: 50,
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.black, width: 2),
                     borderRadius: BorderRadius.all(Radius.circular(20))),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
 
                     Container(
@@ -130,24 +132,47 @@ class _EventScreenState extends State<EventScreen> {
                         },
                       ),
                     ),
-                    // SizedBox.fromSize(
-                    //   size: Size(56, 56), // button width and height
-                    //   child: ClipOval(
-                    //     child: Material(
-                    //       color: Colors.white, // button color
-                    //       child: InkWell(
-                    //         onTap: () {}, // button pressed
-                    //         child: Column(
-                    //           mainAxisAlignment: MainAxisAlignment.center,
-                    //           children: <Widget>[
-                    //             Icon(Icons.search), // icon
-                    //           ],
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ),
-                    // )
 
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                      child: DropdownButton<String>(
+                        value: selectedFilter,
+                        hint: Text(
+                          "Filter",
+                          style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              height: 1.5),
+                        ),
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.grey,
+                            height: 1.3),
+                        icon: Icon(
+                          Icons.arrow_drop_down_circle_rounded,
+                          color: Colors.black,
+                        ),
+                        underline: Container(
+                          height: 2,
+                        ),
+                        items: Common.getMoneyFilterList().map((String value) {
+                          return new DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(
+                              value.toString(),
+                              textAlign: TextAlign.left,
+                              style: TextStyle(color: Colors.grey),
+                            ),
+                          );
+                        }).toList(),
+                        onChanged: (value) {
+                          setState(() {
+                            selectedFilter= value;
+                          });
+                        },
+                      ),
+                    ),
                   ],
                 ),
               ),
